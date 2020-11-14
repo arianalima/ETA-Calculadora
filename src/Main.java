@@ -22,7 +22,7 @@ public class Main {
                 num1 = Float.valueOf(input.next());
                 System.out.println("Digite o segundo número:");
                 num2 = Float.valueOf(input.next());
-                float resultado = 0;
+                float resultado = 0f;
 
                 switch (opcao){
                     case "+":
@@ -35,11 +35,16 @@ public class Main {
                         resultado = calculadora.multiplicacao(num1, num2);
                         break;
                     case "/":
-                        resultado = calculadora.divisao(num1, num2);
+                        try{
+                            resultado = calculadora.divisao(num1, num2);
+                        }catch (ArithmeticException e){
+                            System.out.println("Não é possível dividir por 0!");
+                            resultado = Float.POSITIVE_INFINITY;
+                        }
                         break;
                 }
 
-                System.out.println("Resultado: " + resultado);
+                System.out.println("Resultado: " + resultado + "\n");
 
             }else {
                 break;
